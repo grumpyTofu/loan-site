@@ -1,3 +1,10 @@
+declare module "@built-labs/theme" {
+  const _theme: {
+    theme: any;
+  }
+  export = _theme;
+}
+
 declare module "*.html" {
   const rawHtmlFile: string;
   export = rawHtmlFile;

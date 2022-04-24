@@ -14,7 +14,7 @@ const useApplicantInfo = () => {
   const [applicant, setApplicant] = useState<Applicant>({ firstName: null });
 
   useEffect(() => {
-    const params = window.location.search
+    const applicantInfo = window.location.search
       .replace("?", "")
       .split("&")
       .reduce<Applicant>((applicant, param) => {
@@ -24,6 +24,7 @@ const useApplicantInfo = () => {
         }
         return applicant;
       }, {} as Applicant);
+    setApplicant(applicantInfo);
   }, [window.location.search]);
 
   return { applicant };
@@ -34,9 +35,9 @@ const Root: React.FC = () => {
 
   return (
     <Container>
-      <Typography>
-        Congrats{applicant && applicant.firstName ? ` ${applicant.firstName}` : ''}, you submitted the form successfully
-      </Typography>
+      <Typography>Congrats{applicant && applicant.firstName ? ` ${applicant.firstName}` : ""}, you submitted the form successfully</Typography>
     </Container>
   );
 };
+
+export default Root;

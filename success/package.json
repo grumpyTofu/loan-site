@@ -1,7 +1,7 @@
 {
   "name": "@built-labs/success",
   "scripts": {
-    "start": "webpack serve",
+    "start": "webpack serve --port 9004",
     "start:standalone": "webpack serve --env standalone",
     "build": "concurrently yarn:build:*",
     "build:webpack": "webpack --mode=production",

@@ -1,3 +1,4 @@
+// How can I share this across multiple MFEs for local dev
 declare module "@built-labs/theme" {
   const _theme: {
     theme: any;

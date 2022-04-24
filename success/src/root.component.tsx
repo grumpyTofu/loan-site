@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Container, Typography } from "@mui/material";
+import { Container, Card, Typography } from "@mui/material";
 
 // How do I share this across MFEs
 interface Applicant {
@@ -35,7 +35,9 @@ const Root: React.FC = () => {
 
   return (
     <Container>
-      <Typography>Congrats{applicant && applicant.firstName ? ` ${applicant.firstName}` : ""}, you submitted the form successfully</Typography>
+      <Card sx={{ minHeight: "15vh", display: "flex", justifyContent: "center", alignItems: "center", padding: "3rem" }}>
+        <Typography>Congrats{applicant && applicant.firstName ? ` ${applicant.firstName}` : ""}, you submitted the form successfully</Typography>
+      </Card>
     </Container>
   );
 };

@@ -1,0 +1,15 @@
+{
+  "extends": "ts-config-single-spa",
+  "files": ["src/built-labs-root-config.ts"],
+  "compilerOptions": {
+    "declarationDir": "dist"
+  },
+  "include": ["src/**/*", "theme/theme.ts"],
+  "exclude": ["src/**/*.test*"],
+  "types": [
+    "node",
+    "jest",
+    "@testing-library/jest",
+    "@testing-library/jest-dom"
+  ]
+}

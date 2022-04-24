@@ -1,6 +1,7 @@
 import { Container, Grid, Card, CardContent, CardActions, Typography, Button, TextField } from "@mui/material";
 import { useFormik } from "formik";
 import { navigateToUrl } from "single-spa";
+import { validateEmail, objectIsEmpty } from "@built-labs/validation";
 
 // How can I share this across MFEs
 interface Applicant {
@@ -19,9 +20,24 @@ const Root: React.FC = () => {
       console.log(values);
       navigateToUrl(`/success?firstName=${values.firstName}`);
     },
+    validate: (values) => {
+      const errors = {} as any;
+
+      // validate email
+      if (!values.email) {
+        errors.email = "Required";
+      } else if (!validateEmail(values.email)) {
+        errors.email = "Invalid email address";
+      }
+
+      return errors;
+    },
     // validationSchema: Yup.object().shape({
-    //   title: Yup.string().min(2, 'Too Short!').max(80, 'Too Long!').required('Required'),
-    //   description: Yup.string().min(2, 'Too Short!').max(1000, 'Too Long!').required('Required'),
+    //   firstName: Yup.string().min(2, 'Too Short!').max(80, 'Too Long!').required('Required'),
+    //   lastName: Yup.string().min(2, 'Too Short!').max(80, 'Too Long!').required('Required'),
+    //   email: Yup.string().email().required('Required'),
+    //   loanAmount: Yup.number().min(1, "We can't loan values less than $1.").required("Required"),
+    //   note: Yup.string().min(2, 'Too Short!').max(1000, 'Too Long!').required('Required'),
     // }),
   });
 
@@ -77,8 +93,8 @@ const Root: React.FC = () => {
                 margin="normal"
                 autoComplete="off"
                 variant="outlined"
-                // error={errors.title && touched.title ? true : false}
-                // helperText={errors.title && touched.title && errors.title}
+                error={errors.email && touched.email ? true : false}
+                helperText={errors.email && touched.email && errors.email}
                 label="Email Address"
                 fullWidth
               />
@@ -117,8 +133,7 @@ const Root: React.FC = () => {
               />
             </CardContent>
             <CardActions sx={{ display: "flex", justifyContent: "flex-end" }}>
-              {/* disabled={!dirty || !isEmpty(errors) || isSubmitting} */}
-              <Button onClick={handleSubmit as any} color="primary">
+              <Button onClick={handleSubmit as any} disabled={!dirty || !objectIsEmpty(errors) || isSubmitting} color="primary">
                 Submit
               </Button>
             </CardActions>

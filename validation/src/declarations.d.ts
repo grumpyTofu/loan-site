@@ -1,11 +1,3 @@
-declare module "@built-labs/validation" {
-  const _validation: {
-    validateEmail: (val: string) => boolean;
-    objectIsEmpty: (val: any | null) => boolean;
-    isNullOrWhiteSpace: (val: string | null) => boolean;
-  };
-  export = _validation;
-}
 declare module "*.html" {
   const rawHtmlFile: string;
   export = rawHtmlFile;

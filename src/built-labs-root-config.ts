@@ -7,6 +7,9 @@ import {
 import microfrontendLayout from "./microfrontend-layout.html";
 
 const routes = constructRoutes(microfrontendLayout);
+
+// is there a way to wrap utilities around this?
+// or is it better to just build it into each MFE?
 const applications = constructApplications({
   routes,
   loadApp({ name }) {

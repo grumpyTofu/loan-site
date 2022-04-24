@@ -66,6 +66,7 @@ const Root: React.FC = () => {
     validate: validateInput,
   });
 
+  // what other fields would you add?
   return (
     <ThemeProvider theme={theme}>
       <Container>

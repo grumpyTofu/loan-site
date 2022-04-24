@@ -1,3 +1,4 @@
+// does this need to be published to npm to work with jest?
 declare module "@built-labs/validation" {
   const _validation: {
     validateName: (val: string) => boolean;

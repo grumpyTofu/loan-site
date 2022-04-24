@@ -10,6 +10,8 @@ interface Applicant {
   note?: string | null;
 }
 
+// while url params work and its is an OK way to share data across MFEs, how would you do it?
+// is there a good way to use state management like redux, local storage, etc.?
 const useApplicantInfo = () => {
   const [applicant, setApplicant] = useState<Applicant>({ firstName: null });
 

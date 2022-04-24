@@ -6,4 +6,8 @@ describe("Root component", () => {
     const { baseElement } = render(<Root />);
     expect(baseElement).toBeInTheDocument();
   });
+  it("should have the correct title", () => {
+    const { getByText } = render(<Root />);
+    expect(getByText("Built Labs")).toBeInTheDocument();
+  });
 });

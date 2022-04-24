@@ -37,7 +37,7 @@ const Root: React.FC = () => {
     setAnchorElUser(null);
   };
 
-  const goHome = () => navigateToUrl("/");
+  const goHome = () => navigateToUrl("/loan-application");
 
   return (
     <ThemeProvider theme={theme}>

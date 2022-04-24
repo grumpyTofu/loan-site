@@ -1,4 +1,30 @@
-import { validateEmail, objectIsEmpty, isNullOrWhiteSpace } from "./built-labs-validation";
+import { validateEmail, isNullOrWhiteSpace, validateName, validateLoanAmount } from "./built-labs-validation";
+
+describe("Validate Name", () => {
+  it("should validate good names", () => {
+    const mockName = "Jack";
+    expect(validateName(mockName)).toBe(true);
+  });
+  it("should block bad names", () => {
+    const mockName = "X AE A-12";
+    expect(validateName(mockName)).toBe(false);
+  });
+});
+
+describe("Validate Number", () => {
+  it("should validate minimum loan amount", () => {
+    const mockNumber = 10000;
+    expect(validateLoanAmount(mockNumber)).toBe(true);
+  });
+  it("should block 0", () => {
+    const mockNumber = 0;
+    expect(validateLoanAmount(mockNumber)).toBe(false);
+  });
+  it("should block negative", () => {
+    const mockNumber = -12;
+    expect(validateLoanAmount(mockNumber)).toBe(false);
+  });
+});
 
 describe("Validate Email", () => {
   it("should identify @ symbol", () => {
@@ -8,17 +34,6 @@ describe("Validate Email", () => {
   it("should block bad emails", () => {
     const mockEmail = "badEmailExample.com";
     expect(validateEmail(mockEmail)).toBe(false);
-  });
-});
-
-describe("Validate Object", () => {
-  it("should identify empty objects", () => {
-    const mockObject = {};
-    expect(objectIsEmpty(mockObject)).toBe(true);
-  });
-  it("should identify objects with defined properties", () => {
-    const mockObject = { test: "string" };
-    expect(objectIsEmpty(mockObject)).toBe(false);
   });
 });
 
